@@ -1,0 +1,41 @@
+
+
+
+{% extends 'weather/base.html' %}
+{% block content %}
+
+
+  <article>
+    <header>
+      {% for row in queryset1 %}
+        <h2>{{ row.city_name }} Hourly Weather Details</h2>
+      {% endfor %}
+    </header>
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-md-6">
+          <h5>Summary</h5>
+          <table class = "table table-bordered table-sm">
+            <tr>
+              <td class = "bg-light">Date and Time</td>
+              <td class = "bg-light">Temperature</td>
+            </tr>  
+            {% for row in queryset2 %}
+            <tr>
+              <td><a class = "text-primary" href="{% url 'hourly_detail' context_continent context_country context_state context_city context_month row.pk %}">{{ row.time_period }}</a></td>
+              <td>{{ row.temp }}</td>
+            </tr>  
+            {% endfor %}      
+          </table>
+        </div>
+      </div>    
+    </div>
+
+
+              
+
+  </article>
+
+
+
+{% endblock content %}}    

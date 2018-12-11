@@ -1,0 +1,140 @@
+
+
+
+{% extends 'weather/base.html' %}
+{% block content %}
+
+
+  <article>
+    <header>
+      {% for row in queryset1 %}
+        <h2>{{ row.city_name }} Weather Details</h2>
+      {% endfor %}
+    </header>
+    {% if queryset_tags %}
+    <div class = "container" style = "margin-bottom:30px;">
+      <div class = "row">
+        <div class = "col-md-12">
+         <a class = "bg-success text-white" style = "padding:5px;" href="{% url 'tags' %}">John's Tags</a>
+          {% for tag in queryset_tags %}
+            <span class = "bg-light" style = "margin-right:10px; padding:5px; ">
+              <a class = "text-primary" href="{% url 'tag_cities' tag.tag_id %}">{{ tag.tag_name| safe }}</a>
+            </span>  
+          {% endfor %}
+        </div>
+      </div>
+    </div>    
+    {% endif %}    
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-md-6">
+          <h5>Summary</h5>
+          <table class = "table table-bordered">
+            <tr>
+              <td class = "bg-light">Max Temp</td>
+              <td>{{ queryset2 | safe }}</td>
+            </tr> 
+            <tr>
+              <td class = "bg-light">Min Temp</td>
+              <td>{{ queryset3 | safe }}</td>
+            </tr> 
+            <tr>
+              <td class = "bg-light">Average Temp</td>
+              <td>{{ queryset4 | safe }}</td>
+            </tr>       
+          </table>
+        </div>
+        <div class = "col-md-6">
+          <h5>Monthly Averages</h5>
+          <table class = "table table-bordered">
+            <tr>
+              <td class = "bg-light">
+                Month
+              </td>
+              <td class = "bg-light">Average Temperature</td>
+            </tr> 
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 1 %}">January</a>
+              </td>
+              <td>{{ querysetM1 | safe }}</td>
+            </tr> 
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 2 %}">February</a>
+              </td>
+              <td>{{ querysetM2 | safe }}</td>
+            </tr>       
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 3 %}">March</a>
+              </td>
+              <td>{{ querysetM3 | safe }}</td>
+            </tr>  
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 4 %}">April</a>
+              </td>
+              <td>{{ querysetM4 | safe }}</td>
+            </tr> 
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 5 %}">May</a>
+              </td>
+              <td>{{ querysetM5 | safe }}</td>
+            </tr>       
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 6 %}">June</a>
+              </td>
+              <td>{{ querysetM6 | safe }}</td>
+            </tr>  
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 7 %}">July</a>
+              </td>
+              <td>{{ querysetM7 | safe }}</td>
+            </tr> 
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 8 %}">August</a>
+              </td>
+              <td>{{ querysetM8 | safe }}</td>
+            </tr>       
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 9 %}">September</a>
+              </td>
+              <td>{{ querysetM9 | safe }}</td>
+            </tr>  
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 10 %}">October</a>
+              </td>
+              <td>{{ querysetM10 | safe }}</td>
+            </tr> 
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 11 %}">November</a>
+              </td>
+              <td>{{ querysetM11 | safe }}</td>
+            </tr>       
+            <tr>
+              <td>
+                <a class = "text-primary" href="{% url 'weather_detail' context_continent context_country context_state context_city 12 %}">December</a>
+              </td>
+              <td>{{ querysetM12 | safe }}</td>
+            </tr> 
+          </table>
+        </div>
+      </div>    
+    </div>
+
+
+              
+
+  </article>
+
+
+
+{% endblock content %}}    

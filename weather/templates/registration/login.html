@@ -1,0 +1,12 @@
+{% extends 'weather/base.html' %}
+
+{% block content %}
+
+  <header>
+    <h2>Weather App Login</h2>
+  </header>
+
+  <a class = "btn btn-success text-white" href="{% url 'social:begin' 'google-oauth2' %}">Sign in with Google</a>
+
+
+{% endblock content %}

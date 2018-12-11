@@ -1,0 +1,46 @@
+<!-- Restore missing template tags -->
+{% extends 'weather/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <header>
+    <h2>Site Update</h2>
+  </header>
+
+  <!-- novalidate attribute required to render validation messages -->
+  <form method="post" novalidate>
+  {% csrf_token %}
+  
+
+  <!-- Restore missing fields rendered using Bootstrap rows and columns classes -->
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.temp| as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.time_period | as_crispy_field }}
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.city | as_crispy_field }}
+      </div>
+    </div>
+
+  
+
+  <button type="submit" class="btn btn-outline-success">Update</button>
+  <a class="btn btn-outline-secondary" href="{% url 'hourly_detail' context_continent context_country context_state context_city context_month context_hour %}">cancel</a>
+  
+  <!-- Restore missing button -->
+
+</form>
+
+{% endblock content %}

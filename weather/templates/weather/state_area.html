@@ -1,0 +1,30 @@
+
+
+
+{% extends 'weather/base.html' %}
+{% block content %}
+
+
+  <article>
+    <header>
+      <h2>Select State</h2>
+    </header>
+    <div>
+      <i>Not all states have cities with weather data</i>
+    </div>  
+    {% if states %}
+    <ul>
+      {% for state in states %}
+        <li><a class = "text-primary" href="{% url 'cities' state.country.continent.continent_id state.country.country_id state.pk %}">{{ state.state_name | safe }}</a></li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+    <p>No States are available to view.</p>
+    {% endif %}
+
+  </article>
+
+
+
+{% endblock content %}}    

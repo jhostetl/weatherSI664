@@ -1,0 +1,20 @@
+
+{% extends 'weather/base.html' %}
+{% block content %}
+
+  <article>
+    <header>
+      <h3><span class = "text-secondary">Tagged:</span> {{queryset1}}</h3>
+    </header>  
+    {% if queryset2 %}
+    <ul>
+      {% for item in queryset2 %}
+        <li><a class = "text-primary" href="{% url 'weather_city' item.city.state.country.continent.continent_id item.city.state.country.country_id item.city.state.state_id item.city_id %}">{{ item.city_name | safe }}</a></li>
+      {% endfor %}
+
+    </ul>
+    {% else %}
+    <p>No cities have this tag.</p>
+    {% endif %}
+  </article>
+{% endblock content %}}    

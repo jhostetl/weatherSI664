@@ -1,0 +1,37 @@
+
+
+
+{% extends 'weather/base.html' %}
+{% block content %}
+
+
+  <article>
+    <header>
+      <h2>Countries</h2>
+    </header>
+
+   
+<h2>{{country.country_area_name | safe}}</h2>
+    {% if countries %}
+    <ul>
+
+      {% for country in countries %}
+
+        {% if country.country_name == "United States" %}
+          <li><a class = "text-primary" href="{% url 'states' country.continent.continent_id country.pk  %}">{{ country.country_name | safe }}</a></li>
+        {% else %}
+          <li class = "text-secondary"><del>{{ country.country_name | safe }}</del></li>     
+        {% endif %}
+        <!-- safe filter on for raw HTML stored in database -->
+      {% endfor %}
+
+    </ul>
+    {% else %}
+    <p>No Countries are available to view.</p>
+    {% endif %}
+
+  </article>
+
+
+
+{% endblock content %}}    

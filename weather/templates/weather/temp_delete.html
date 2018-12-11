@@ -1,0 +1,12 @@
+{% extends 'weather/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete this hourly temperature for "{{ hourly_temp.time_period }}"?</p>
+    <button type="submit" class="btn btn-outline-danger">delete</button>
+    <a class="btn btn-outline-secondary" href="{% url 'hourly_detail' context_continent context_country context_state context_city context_month context_hour %}">cancel</a>
+  </form>
+
+{% endblock content %}

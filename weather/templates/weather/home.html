@@ -1,0 +1,30 @@
+{% extends 'weather/base.html' %}
+
+{% block content %}
+
+<h2>Weather Data</h2>
+
+<div class = "container">
+	<div class = "row">
+		<div class = "col-md-8">
+			<p>
+				I selected hourly weather data from 36 cities in 2016. I provide a structure that is ready for data in every country. 
+			</p>
+		</div>
+	</div>	
+	<div class = "row">
+		<div class = "col-md-8">
+			<a class = "btn btn-success text-white" href="{% url 'continents' %}">Browse</a>
+      		<div style = "margin-top:15px; margin-bottom:10px;">or choose city: 
+      		</div>
+		      {% for city in cities %}
+		        <li><a class = "text-primary" href="{% url 'weather_city' city.state.country.continent.continent_id city.state.country.country_id city.state.state_id city.pk %}">{{ city.city_name | safe }}</a></li>
+		        <!-- safe filter on for raw HTML stored in database -->
+		      {% endfor %}		
+		</div>
+	</div>	
+</div>
+
+    
+
+{% endblock content %}

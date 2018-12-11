@@ -1,0 +1,23 @@
+
+{% extends 'weather/base.html' %}
+{% block content %}
+
+  <article>
+    <header>
+      <h2>Weather Tags</h2>
+    </header>
+    <div>
+      created at John's discretion
+    </div>  
+    {% if tags %}
+    <ul>
+      {% for tag in tags %}
+        <li><a class = "text-primary" href="{% url 'tag_cities' tag.pk %}">{{ tag.tag_name| safe }}</a></li>    
+      {% endfor %}
+
+    </ul>
+    {% else %}
+    <p>No tags are available to view.</p>
+    {% endif %}
+  </article>
+{% endblock content %}}    

@@ -1,0 +1,25 @@
+
+{% extends 'weather/base.html' %}
+{% block content %}
+
+  <article>
+    <header>
+      <h2>Select Continent</h2>
+    </header>
+    {% if continents %}
+    <ul>
+      {% for continent in continents %}
+        <!-- safe filter on for raw HTML stored in database -->
+        {% if continent.continent_name == "North America" %}
+          <li><a class = "text-primary" href="{% url 'countries' continent.pk %}">{{ continent.continent_name| safe }}</a></li>
+        {% else %}
+          <li class = "text-secondary"><del>{{ continent.continent_name| safe }}</del></li>     
+        {% endif %}
+      {% endfor %}
+
+    </ul>
+    {% else %}
+    <p>No Continents are available to view.</p>
+    {% endif %}
+  </article>
+{% endblock content %}}    

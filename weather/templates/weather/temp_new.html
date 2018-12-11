@@ -1,0 +1,42 @@
+{% extends 'weather/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+  <header>
+    <h2>New Hourly Temp</h2>
+  </header>
+
+  <!-- novalidate attribute required to render validation messages -->
+  <form method="post" novalidate>
+    {% csrf_token %}
+
+    <div class="row">
+      <div class="col-6">
+        {{ form.temp | as_crispy_field }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        Time Format yyyy-mm-dd hh:mm:ss
+        {{ form.time_period | as_crispy_field }} 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+        {{ form.city | as_crispy_field }}
+      </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-outline-success">Add</button>
+    &nbsp;<a class="btn btn-outline-secondary" href="{% url 'home' %}">cancel</a>
+  </form>
+
+{% else %}
+  <a href="{% url 'login' %}">Log in</a>
+{% endif %}
+
+{% endblock content %}

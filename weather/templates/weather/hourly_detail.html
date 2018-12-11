@@ -1,0 +1,37 @@
+{% extends 'weather/base.html' %}
+{% block content %}
+
+  <article>
+    <header>
+      {% for row in queryset1 %}
+        <h2>{{ row.city_name }} Hourly Weather Details</h2>
+      {% endfor %}
+    </header>
+    <div class = "container">
+      <div class = "row">
+        <div class = "col-md-6">
+          <h5>Summary</h5>
+          <table class = "table table-bordered table-sm">
+            <tr>
+              <td class = "bg-light">Date and Time</td>
+              <td class = "bg-light">Temperature</td>
+            </tr>  
+            {% for row in queryset2 %}
+            <tr>
+              <td>{{ row.time_period }}</td>
+              <td>{{ row.temp }}</td>
+            </tr>  
+            {% endfor %}      
+          </table> 
+          {% if user.is_authenticated %}
+            <a class = "btn btn-success text-white" href="{% url 'temp_update' context_continent context_country context_state context_city context_month context_hour  %}">Update Hourly Temp</a>
+            <a class = "btn btn-danger text-white" href="{% url 'temp_delete' context_continent context_country context_state context_city context_month context_hour  %}">Delete Hourly Temp</a>
+          {% endif %}                  
+        </div>
+      </div>    
+    </div>            
+  </article>
+    <!-- render content here if user is authenticated -->
+
+
+{% endblock content %}}    
