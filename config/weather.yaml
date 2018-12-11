@@ -1,0 +1,11 @@
+################
+#   Database   #
+################
+
+mysql:
+  host: localhost
+  port: 3306
+  user: john
+  passwd: ralph2000
+  db: weather2
+  local_infile: True
