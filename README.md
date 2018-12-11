@@ -6,7 +6,9 @@ Data set shows hourly weather from Kaggle.com, https://www.kaggle.com/selfishgen
 
 I created a structure to add future data for every country. It would be interesting to have more cities around the world. 
 
-There is a many to many relationship between cities and tags. Others are one to many. Most cities don't have tags since they were manually assigned by me. My API and CRUD forms are for hourly temperature. This is a one to many. I finished my project before knowing about this. Pagination wasn't working for me, but could have useful on the monthly temperature list pages. 
+There is a many to many relationship between cities and tags. Others are one to many. Most cities don't have tags since they were manually assigned by me. My API and CRUD forms are for hourly temperature. This is a one to many. I finished my project before knowing that it should be a many to many.
+
+Pagination wasn't working for me, but could have useful on the monthly temperature list pages. 
 
 Below is the database model. 
 
